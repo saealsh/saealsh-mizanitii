@@ -37,6 +37,35 @@ body{font-family:'Flounce','Cairo','Arial',sans-serif;background:var(--navy);col
 
 
 
+
+/* STREAK */
+.streak-wrap{background:linear-gradient(160deg,rgba(86,28,36,.5),rgba(42,13,16,.7));border:1px solid rgba(199,183,163,.25);border-radius:18px;padding:16px 18px;margin-bottom:16px;position:relative;overflow:hidden;}
+.streak-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(199,183,163,.08),transparent 70%);pointer-events:none;}
+.streak-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.streak-title{font-size:14px;font-weight:800;color:#E8D8C4;}
+.streak-flame{font-size:28px;animation:flamePulse 1.5s ease-in-out infinite;}
+@keyframes flamePulse{0%,100%{transform:scale(1);}50%{transform:scale(1.15);}}
+.streak-count-wrap{text-align:center;margin-bottom:16px;}
+.streak-big{font-size:64px;font-weight:900;color:#E8D8C4;line-height:1;font-family:'Flounce','Cairo','Arial',sans-serif;}
+.streak-big.active{color:#C7B7A3;text-shadow:0 0 30px rgba(199,183,163,.4);}
+.streak-days-lbl{font-size:13px;color:#9a8878;margin-top:4px;}
+.streak-circles{display:flex;gap:6px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;}
+.streak-circle{width:36px;height:36px;border-radius:50%;border:2px solid rgba(199,183,163,.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:#9a8878;font-weight:700;transition:all .3s;position:relative;}
+.streak-circle.done{background:linear-gradient(135deg,#6D2932,#561C24);border-color:#C7B7A3;color:#E8D8C4;box-shadow:0 0 10px rgba(199,183,163,.2);}
+.streak-circle.done::after{content:'🔥';position:absolute;top:-8px;right:-4px;font-size:10px;}
+.streak-circle.today{border-color:#E8D8C4;border-width:2px;animation:todayPulse 2s infinite;}
+@keyframes todayPulse{0%,100%{box-shadow:0 0 0 0 rgba(232,216,196,.3);}50%{box-shadow:0 0 0 6px rgba(232,216,196,.0);}}
+.streak-circle-lbl{font-size:8px;color:#9a8878;text-align:center;margin-top:3px;}
+.streak-days-row{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.streak-checkin-btn{width:100%;background:linear-gradient(135deg,#6D2932,#561C24);border:1px solid rgba(199,183,163,.3);color:#E8D8C4;padding:13px;border-radius:13px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Flounce','Cairo','Arial',sans-serif;transition:all .3s;letter-spacing:.5px;}
+.streak-checkin-btn:hover{background:linear-gradient(135deg,#7a3040,#6D2932);transform:translateY(-2px);box-shadow:0 6px 20px rgba(109,41,50,.4);}
+.streak-checkin-btn.done{background:linear-gradient(135deg,rgba(86,28,36,.4),rgba(42,13,16,.6));color:#9a8878;cursor:default;transform:none;border-style:dashed;}
+.streak-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+.streak-stat{background:rgba(20,5,8,.4);border-radius:11px;padding:10px;text-align:center;border:1px solid rgba(199,183,163,.1);}
+.streak-stat-num{font-size:20px;font-weight:900;color:#C7B7A3;font-family:'Flounce','Cairo','Arial',sans-serif;}
+.streak-stat-lbl{font-size:9px;color:#9a8878;margin-top:3px;}
+.streak-msg{text-align:center;font-size:12px;color:#C7B7A3;margin-top:10px;min-height:18px;}
+
 /* SALARY CARD */
 .salary-card{background:linear-gradient(160deg,rgba(86,28,36,.5),rgba(42,13,16,.7));border:1px solid rgba(199,183,163,.3);border-radius:16px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 .salary-icon{font-size:35.1px;flex-shrink:0;}
@@ -490,6 +519,27 @@ body{font-family:'Flounce','Cairo','Arial',sans-serif;background:var(--navy);col
     </div>
   </div>
 
+
+  <!-- STREAK -->
+  <div class="streak-wrap">
+    <div class="streak-header">
+      <div class="streak-title">سلسلة المتابعة اليومية</div>
+      <div class="streak-flame">🔥</div>
+    </div>
+    <div class="streak-count-wrap">
+      <div class="streak-big" id="streakBig">0</div>
+      <div class="streak-days-lbl">يوم متتالي</div>
+    </div>
+    <div class="streak-circles" id="streakCircles"></div>
+    <button class="streak-checkin-btn" id="streakBtn" onclick="doCheckin()">✅ سجّل حضورك اليوم</button>
+    <div class="streak-msg" id="streakMsg"></div>
+    <div class="streak-stats">
+      <div class="streak-stat"><div class="streak-stat-num" id="streakCurrent">0</div><div class="streak-stat-lbl">السلسلة الحالية</div></div>
+      <div class="streak-stat"><div class="streak-stat-num" id="streakMax">0</div><div class="streak-stat-lbl">أطول سلسلة</div></div>
+      <div class="streak-stat"><div class="streak-stat-num" id="streakTotal">0</div><div class="streak-stat-lbl">إجمالي الأيام</div></div>
+    </div>
+  </div>
+
   <div class="ai-bar"><div style="font-size:20px">🤖</div><div style="flex:1"><div class="ait">وش يقول الذكاء الاصطناعي؟</div><div class="aim" id="aiMsg">أضف بياناتك أول عشان أحللها لك 😎</div></div><div class="spark" onclick="refreshAI()">✨</div></div>
   <div class="fc-bar"><span style="font-size:16px">🔮</span><div class="fc-text">بناءً على صرفك الحالي، متوقع آخر الشهر تكون</div><div class="fc-val" id="fcV">—</div></div>
   <div class="pts-bar"><span style="font-size:18px">⭐</span><div><div class="pts-v" id="ptsV">0</div><div class="pts-l">نقطة كسبتها</div></div><div class="pts-lv" id="ptsLv">مبتدئ 🌱</div></div>
@@ -505,10 +555,10 @@ body{font-family:'Flounce','Cairo','Arial',sans-serif;background:var(--navy);col
   <div class="srch"><div class="srch-row"><span style="font-size:14px">🔍</span><input class="srch-inp" id="srchI" placeholder="دور على أي معاملة..." oninput="doSearch(this.value)"><button style="background:none;border:none;color:var(--gray);cursor:pointer;font-size:13px" onclick="clearSrch()">✕</button></div><div class="srch-res" id="srchR" style="display:none"></div></div>
   <div class="two-col">
     <div class="sec-card"><div class="sech"><div class="sect">💵 وش مصادر دخلك؟</div><div style="display:flex;gap:6px;align-items:center"><span class="sec-tot" style="color:#C7B7A3" id="incT">٠ ﷼</span><button class="add-btn" onclick="tF('fI')">+ أضف</button></div></div><div class="items" id="incL"></div><div class="add-form" id="fI"><div class="form-row"><input class="fi" id="iN" placeholder="مثل: راتب، شغل حر..." type="text"><input class="fi" id="iA" placeholder="الرقم ﷼" type="number" min="0"><select class="fs" id="iC"><option value="💼">💼 راتب</option><option value="💻">💻 شغل حر</option><option value="🏪">🏪 تجارة</option><option value="📦">📦 استثمار</option><option value="🎁">🎁 هدية</option><option value="➕">➕ غير ذلك</option></select><button class="fb2" onclick="addItem('income')">سجّل</button></div><label class="fchk"><input type="checkbox" id="iR"> كرره كل شهر 🔄</label></div></div>
-    <div class="sec-card"><div class="sech"><div class="sect">🏠 مصاريف ثابتة</div><div style="display:flex;gap:6px;align-items:center"><span class="sec-tot" style="color:var(--red)" id="fixT">٠ ﷼</span><button class="add-btn" onclick="tF('fFx')">+ أضف</button></div></div><div class="items" id="fixL"></div><div class="add-form" id="fFx"><div class="form-row"><input class="fi" id="fxN" placeholder="مثل: إيجار، نت، سيارة..." type="text"><input class="fi" id="fxA" placeholder="الرقم ﷼" type="number" min="0"><select class="fs" id="fxC"><option value="🏠">🏠 إيجار</option><option value="💡">💡 كهرباء/ماء</option><option value="📱">📱 جوال/نت</option><option value="🚗">🚗 سيارة</option><option value="📚">📚 دراسة</option><option value="🏦">🏦 قسط</option><option value="📺">📺 اشتراكات</option><option value="➕">➕ غير ذلك</option></select><button class="fb2" onclick="addItem('fixed')">سجّل</button></div><label class="fchk"><input type="checkbox" id="fxR" checked> كرره كل شهر 🔄</label></div></div>
+    <div class="sec-card"><div class="sech"><div class="sect">🏠 مصاريف ثابتة</div><div style="display:flex;gap:6px;align-items:center"><span class="sec-tot" style="color:#C7B7A3" id="fixT">٠ ﷼</span><button class="add-btn" onclick="tF('fFx')">+ أضف</button></div></div><div class="items" id="fixL"></div><div class="add-form" id="fFx"><div class="form-row"><input class="fi" id="fxN" placeholder="مثل: إيجار، نت، سيارة..." type="text"><input class="fi" id="fxA" placeholder="الرقم ﷼" type="number" min="0"><select class="fs" id="fxC"><option value="🏠">🏠 إيجار</option><option value="💡">💡 كهرباء/ماء</option><option value="📱">📱 جوال/نت</option><option value="🚗">🚗 سيارة</option><option value="📚">📚 دراسة</option><option value="🏦">🏦 قسط</option><option value="📺">📺 اشتراكات</option><option value="➕">➕ غير ذلك</option></select><button class="fb2" onclick="addItem('fixed')">سجّل</button></div><label class="fchk"><input type="checkbox" id="fxR" checked> كرره كل شهر 🔄</label></div></div>
   </div>
   <div class="two-col">
-    <div class="sec-card"><div class="sech"><div class="sect">🛒 مصاريف متغيرة</div><div style="display:flex;gap:6px;align-items:center"><span class="sec-tot" style="color:#ff9800" id="varT">٠ ﷼</span><button class="add-btn" onclick="tF('fV')">+ أضف</button></div></div><div class="items" id="varL"></div><div class="add-form" id="fV"><div class="form-row"><input class="fi" id="vN" placeholder="مثل: أكل، ملابس، قهوة..." type="text"><input class="fi" id="vA" placeholder="الرقم ﷼" type="number" min="0"><select class="fs" id="vC"><option value="🛒">🛒 بقالة</option><option value="🍽️">🍽️ مطاعم/قهوة</option><option value="👗">👗 ملابس</option><option value="💄">💄 عناية</option><option value="🎮">🎮 ترفيه</option><option value="✈️">✈️ سفريات</option><option value="🏥">🏥 صحة</option><option value="🎁">🎁 هدايا</option><option value="➕">➕ غير ذلك</option></select><button class="fb2" onclick="addItem('var')">سجّل</button></div></div></div>
+    <div class="sec-card"><div class="sech"><div class="sect">🛒 مصاريف متغيرة</div><div style="display:flex;gap:6px;align-items:center"><span class="sec-tot" style="color:#C7B7A3" id="varT">٠ ﷼</span><button class="add-btn" onclick="tF('fV')">+ أضف</button></div></div><div class="items" id="varL"></div><div class="add-form" id="fV"><div class="form-row"><input class="fi" id="vN" placeholder="مثل: أكل، ملابس، قهوة..." type="text"><input class="fi" id="vA" placeholder="الرقم ﷼" type="number" min="0"><select class="fs" id="vC"><option value="🛒">🛒 بقالة</option><option value="🍽️">🍽️ مطاعم/قهوة</option><option value="👗">👗 ملابس</option><option value="💄">💄 عناية</option><option value="🎮">🎮 ترفيه</option><option value="✈️">✈️ سفريات</option><option value="🏥">🏥 صحة</option><option value="🎁">🎁 هدايا</option><option value="➕">➕ غير ذلك</option></select><button class="fb2" onclick="addItem('var')">سجّل</button></div></div></div>
     <div class="sec-card"><div class="sech"><div class="sect">🎯 أهدافك المالية</div><button class="add-btn" onclick="tF('fG')">+ هدف جديد</button></div><div id="goalL"></div><div class="add-form" id="fG"><div class="form-row"><input class="fi" id="gN" placeholder="وش تبي توفر له؟" type="text"><input class="fi" id="gT" placeholder="المبلغ المستهدف" type="number" min="0"><input class="fi" id="gS" placeholder="كم وفرت لحد الآن" type="number" min="0"><select class="fs" id="gI"><option value="✈️">✈️ سفريات</option><option value="🚗">🚗 سيارة</option><option value="🏠">🏠 بيت</option><option value="💍">💍 زواج</option><option value="📱">📱 جهاز</option><option value="🎓">🎓 دراسة</option><option value="🆘">🆘 طوارئ</option><option value="⭐">⭐ غير ذلك</option></select><button class="fb2" onclick="addGoal()">سجّل</button></div></div></div>
   </div>
   <div class="ach-sec"><div class="ach-title">🏆 وش اللي حققته؟</div><div class="ach-grid" id="achG"></div></div>
@@ -1095,6 +1145,131 @@ document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.key==='s'){e.pre
 document.getElementById('qModal').addEventListener('click',function(e){if(e.target===this)closeQuick();});
 
 
+
+// ===== STREAK SYSTEM =====
+var streakData = {days:[], current:0, max:0, total:0};
+try{ streakData = JSON.parse(localStorage.getItem('flounce_streak') || '{}');
+  if(!streakData.days) streakData = {days:[], current:0, max:0, total:0};
+} catch(e) {}
+
+function getTodayStr(){
+  var d=new Date();
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+function getYesterdayStr(){
+  var d=new Date(); d.setDate(d.getDate()-1);
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+
+function saveStreak(){
+  localStorage.setItem('flounce_streak', JSON.stringify(streakData));
+}
+
+function calcStreak(){
+  if(!streakData.days || !streakData.days.length){ streakData.current=0; return; }
+  // Sort days desc
+  var sorted = streakData.days.slice().sort().reverse();
+  var today = getTodayStr();
+  var yesterday = getYesterdayStr();
+  // Check if streak is still alive (last day = today or yesterday)
+  if(sorted[0] !== today && sorted[0] !== yesterday){
+    streakData.current = 0;
+  } else {
+    var cnt = 0;
+    var check = sorted[0] === today ? today : yesterday;
+    for(var i=0; i<sorted.length; i++){
+      if(sorted[i] === check){
+        cnt++;
+        // go back one day
+        var d=new Date(check); d.setDate(d.getDate()-1);
+        check = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+      } else break;
+    }
+    streakData.current = cnt;
+  }
+  streakData.max = Math.max(streakData.max||0, streakData.current);
+  streakData.total = streakData.days.length;
+}
+
+function doCheckin(){
+  var today = getTodayStr();
+  if(streakData.days && streakData.days.indexOf(today) >= 0){
+    toast('سجّلت حضورك اليوم بالفعل 🔥', 'info'); return;
+  }
+  if(!streakData.days) streakData.days = [];
+  streakData.days.push(today);
+  calcStreak();
+  saveStreak();
+  addPts(20);
+  // Check milestone
+  if(streakData.current === 7)  toast('🏆 أسبوع كامل! +50 نقطة إضافية', 'pro'), addPts(50);
+  if(streakData.current === 30) toast('🌟 شهر كامل! +200 نقطة إضافية', 'pro'), addPts(200);
+  if(streakData.current === 100) toast('👑 100 يوم متتالي! أسطورة!', 'pro'), addPts(500);
+  renderStreak();
+  toast('تم تسجيل حضورك اليوم 🔥 +20 نقطة', 'success');
+}
+
+function renderStreak(){
+  calcStreak();
+  var today = getTodayStr();
+  var checked = streakData.days && streakData.days.indexOf(today) >= 0;
+
+  // Big number
+  var bigEl = document.getElementById('streakBig');
+  if(bigEl){
+    bigEl.textContent = streakData.current || 0;
+    bigEl.className = 'streak-big' + (streakData.current > 0 ? ' active' : '');
+  }
+
+  // Last 7 days circles
+  var circlesEl = document.getElementById('streakCircles');
+  if(circlesEl){
+    var h = '';
+    for(var i=6; i>=0; i--){
+      var d = new Date(); d.setDate(d.getDate()-i);
+      var ds = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+      var dayName = ['أح','إث','ثل','أر','خم','جم','سب'][d.getDay()];
+      var done = streakData.days && streakData.days.indexOf(ds) >= 0;
+      var isToday = (i === 0);
+      h += '<div class="streak-days-row">';
+      h += '<div class="streak-circle' + (done?' done':'') + (isToday&&!done?' today':'') + '">' + (done?'✓':dayName) + '</div>';
+      h += '<div class="streak-circle-lbl">' + d.getDate() + '</div></div>';
+    }
+    circlesEl.innerHTML = h;
+  }
+
+  // Button
+  var btn = document.getElementById('streakBtn');
+  if(btn){
+    if(checked){
+      btn.textContent = '✅ سجّلت حضورك اليوم 🔥';
+      btn.className = 'streak-checkin-btn done';
+    } else {
+      btn.textContent = '🔥 سجّل حضورك اليوم';
+      btn.className = 'streak-checkin-btn';
+    }
+  }
+
+  // Stats
+  if(document.getElementById('streakCurrent')) document.getElementById('streakCurrent').textContent = streakData.current || 0;
+  if(document.getElementById('streakMax'))     document.getElementById('streakMax').textContent = streakData.max || 0;
+  if(document.getElementById('streakTotal'))   document.getElementById('streakTotal').textContent = streakData.total || 0;
+
+  // Message
+  var msg = '';
+  var cur = streakData.current || 0;
+  if(!checked) msg = 'سجّل حضورك اليوم عشان ما تكسر السلسلة! ⚡';
+  else if(cur >= 100) msg = '👑 أنت أسطورة! 100+ يوم متتالي';
+  else if(cur >= 30)  msg = '🌟 شهر كامل ماشاء الله! استمر';
+  else if(cur >= 14)  msg = '💎 أسبوعين متتالين! رهيب';
+  else if(cur >= 7)   msg = '🏆 أسبوع كامل! ما شاء الله';
+  else if(cur >= 3)   msg = '🔥 ' + cur + ' أيام متتالية — استمر!';
+  else if(cur === 1)  msg = '✅ بداية موفقة! تعال باكر 😊';
+  else msg = 'ابدأ سلسلتك اليوم 💪';
+  if(document.getElementById('streakMsg')) document.getElementById('streakMsg').textContent = msg;
+}
+
+
 // ===== SALARY DAY =====
 var salaryDay = 0;
 try{salaryDay=parseInt(localStorage.getItem('flounce_salary')||'0');}catch(e){}
@@ -1157,6 +1332,7 @@ if(!isPro){document.getElementById('proContent').style.display='none';document.g
 else{document.getElementById('upgradeBtn').style.display='none';}
 buildYearBtns();
 initSalarySelect();
+renderStreak();
 render();
 
 </script>
