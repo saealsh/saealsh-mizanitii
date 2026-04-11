@@ -759,6 +759,293 @@ body{padding-bottom:78px;}
 .cg-step-text b{color:#E8D8C4;}
 .cg-code{background:rgba(0,0,0,.4);border:1px solid rgba(80,140,210,.13);border-radius:7px;padding:7px 11px;font-size:10px;color:#6090c0;font-family:monospace;direction:ltr;text-align:left;margin-top:3px;white-space:pre;}
 .cg-note{background:rgba(245,200,66,.05);border:1px solid rgba(245,200,66,.13);border-radius:7px;padding:9px 11px;font-size:11px;color:#c09020;margin-top:9px;line-height:1.6;}
+
+/* ================================================================
+   MOBILE-FIRST REDESIGN
+   ================================================================ */
+
+/* ── HEADER RESTRUCTURE ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(20,5,8,.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(199,183,163,.12);
+  padding: 0;
+}
+
+.hi {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  min-height: 56px;
+}
+.hi::-webkit-scrollbar { display: none; }
+
+/* Logo compact on mobile */
+.logo { display: flex; align-items: center; gap: 7px; cursor: pointer; flex-shrink: 0; }
+.logo-ring { font-size: 22px; }
+.logo-text { font-size: 20px; font-weight: 900; color: var(--white); letter-spacing: .5px; }
+.logo-sub { display: none; }
+.ai-badge { display: none; }
+
+/* Date pill + nav group */
+.header-nav-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.today-date-pill {
+  font-size: 9px;
+  color: #8a7a6e;
+  background: rgba(199,183,163,.08);
+  border: 1px solid rgba(199,183,163,.12);
+  border-radius: 8px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: .3px;
+}
+
+.mnav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.nav-btn {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 7px !important;
+  font-size: 18px !important;
+}
+
+.month-lbl {
+  font-size: 13px !important;
+  min-width: 80px !important;
+  text-align: center;
+}
+
+/* Tabs compact */
+.tabs {
+  display: flex;
+  gap: 2px;
+  background: rgba(20,5,7,.4);
+  border-radius: 9px;
+  padding: 2px;
+  border: 1px solid rgba(199,183,163,.12);
+  flex-shrink: 0;
+}
+
+.tab {
+  font-size: 11px !important;
+  padding: 5px 9px !important;
+  border-radius: 7px !important;
+}
+
+/* Bell compact */
+.notif-bell-btn {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  flex-shrink: 0;
+}
+
+/* Upgrade btn compact */
+.upgrade-btn {
+  font-size: 11px !important;
+  padding: 4px 8px !important;
+  border-radius: 7px !important;
+  flex-shrink: 0;
+}
+
+/* ── MAIN CONTENT ── */
+.main {
+  padding: 10px 10px 0;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── SUMMARY CARDS ── */
+.scards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sc {
+  border-radius: 14px !important;
+  padding: 12px 11px !important;
+}
+
+.sc-num {
+  font-size: 18px !important;
+}
+
+/* ── SECTION CARDS ── */
+.two-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sec-card {
+  border-radius: 14px !important;
+  padding: 13px !important;
+}
+
+.sect { font-size: 13px !important; }
+.sect-sub { font-size: 9px !important; }
+
+/* ── FORMS ── */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fi {
+  font-size: 13px !important;
+  padding: 9px 11px !important;
+  border-radius: 9px !important;
+}
+
+.fs {
+  font-size: 13px !important;
+  padding: 9px 11px !important;
+  border-radius: 9px !important;
+}
+
+.fb2 {
+  font-size: 13px !important;
+  padding: 10px !important;
+  border-radius: 9px !important;
+  width: 100%;
+  margin-top: 2px;
+}
+
+/* ── BUDGET BAR ── */
+.bpw {
+  border-radius: 14px !important;
+  padding: 12px !important;
+  margin-bottom: 10px;
+}
+
+/* ── STREAK BAR ── */
+.stk-bar {
+  border-radius: 12px !important;
+  gap: 6px !important;
+  margin-bottom: 10px;
+}
+
+.stk-item {
+  border-radius: 10px !important;
+  padding: 8px 10px !important;
+  font-size: 11px !important;
+}
+
+.stk-v { font-size: 16px !important; }
+
+/* ── CHARTS ── */
+.charts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.chart-card {
+  border-radius: 14px !important;
+  padding: 13px !important;
+}
+
+/* ── ITEMS ── */
+.item-row {
+  border-radius: 9px !important;
+  padding: 9px 11px !important;
+  font-size: 12px !important;
+}
+
+/* ── GOALS ── */
+.goal-card {
+  border-radius: 12px !important;
+  padding: 11px !important;
+}
+
+/* ── TIP BAR ── */
+.tip-bar {
+  border-radius: 12px !important;
+  padding: 10px 12px !important;
+  font-size: 11px !important;
+  margin-bottom: 10px;
+}
+
+/* ── SEARCH ── */
+.srch {
+  margin-bottom: 10px;
+}
+.srch-row {
+  border-radius: 10px !important;
+  padding: 8px 11px !important;
+}
+
+/* ── ACHIEVEMENTS ── */
+.ach-sec {
+  border-radius: 14px !important;
+  padding: 13px !important;
+  margin-bottom: 10px;
+}
+
+/* ── CHARITY MOBILE ── */
+.charity-hero { padding: 16px 14px 14px !important; }
+.charity-title { font-size: 15px !important; }
+.charity-stats { gap: 6px; }
+.cstat-num { font-size: 15px !important; }
+.charity-pct-row { gap: 4px; }
+.cpct-btn { font-size: 10px !important; padding: 6px 4px !important; }
+.charity-log-btn { font-size: 13px !important; padding: 11px !important; }
+
+/* ── QUICK ADD BAR MOBILE ── */
+.quick-add-bar {
+  padding: 8px 10px 14px !important;
+}
+.qa-inp { font-size: 13px !important; }
+.qa-amt { font-size: 13px !important; width: 65px !important; }
+
+/* ── RESPONSIVE BREAKPOINT ── */
+@media (min-width: 480px) {
+  .form-row { flex-direction: row; }
+  .two-col { flex-direction: row; }
+  .logo-sub { display: block; font-size: 9px; }
+  .logo-text { font-size: 24px; }
+  .month-lbl { font-size: 16px !important; min-width: 100px !important; }
+  .tab { font-size: 13px !important; padding: 5px 12px !important; }
+  .upgrade-btn { font-size: 13px !important; padding: 6px 12px !important; }
+}
+
+@media (min-width: 640px) {
+  .main { padding: 14px 16px 0; }
+  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .scards { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Fix qModal removal - hide it cleanly */
+.qmodal { display: none !important; }
+.fab { display: none !important; }
+
 </style>
 </head>
 <body>
@@ -858,12 +1145,7 @@ body{padding-bottom:78px;}
     <button class="pro-cancel" onclick="closeModal('proModal')">لاحقاً</button>
   </div>
 </div>
-
-<div class="fab">
-  <button class="fb fb-mini fb-exp" id="fabExp" style="display:none" onclick="openQuick('out')">💸</button>
-  <button class="fb fb-mini fb-inc" id="fabInc" style="display:none" onclick="openQuick('in')">💵</button>
-  <button class="fb fb-main" id="fabMain" onclick="toggleFab()">+</button>
-</div>
+>
 
 <div class="qmodal" id="qModal">
   <div class="qmc">
@@ -893,10 +1175,13 @@ body{padding-bottom:78px;}
       <div><div class="logo-text">فلونس</div><div class="logo-sub">مخططك المالي الذكي</div></div>
     </div>
     <div class="ai-badge"><div class="ai-dot"></div>الذكاء الاصطناعي شغال ✅</div>
-    <div class="mnav" id="mnavWrap">
-      <button class="nav-btn" onclick="changeMonth(-1)">‹</button>
-      <div class="month-lbl" id="mLbl"></div>
-      <button class="nav-btn" onclick="changeMonth(1)">›</button>
+    <div class="header-nav-group">
+      <div class="today-date-pill" id="todayDatePill"></div>
+      <div class="mnav" id="mnavWrap">
+        <button class="nav-btn" onclick="changeMonth(-1)">‹</button>
+        <div class="month-lbl" id="mLbl"></div>
+        <button class="nav-btn" onclick="changeMonth(1)">›</button>
+      </div>
     </div>
     <button class="notif-bell-btn" id="notifBellBtn" onclick="openNotifPanel()" title="التنبيهات">
       🔔
@@ -1036,7 +1321,7 @@ body{padding-bottom:78px;}
   </div>
 
   <div class="ach-sec"><div><div class="ach-title">🏆 وش اللي حققته؟</div><div class="sect-sub" style="color:#9a8878;font-size:10px;margin-top:2px;">شارات تكتسبها كل ما حققت هدفاً مالياً</div></div><div class="ach-grid" id="achG"></div></div>
-  <div class="daily-sec"><div class="sech" style="margin-bottom:11px"><div><div class="sect">📅 وش صرفت اليوم؟</div><div class="sect-sub">سجّل أي مصروف أو دخل يومي بالضغط على اليوم</div></div><div style="font-size:9px;color:var(--gray)">اضغط على اليوم وسجّل</div></div><div class="dgrid" id="dGrid"></div><div class="dlog" id="dLog" style="display:none"><div class="dlog-t" id="dLogT"></div><div class="dlog-entries" id="dLogE"></div><div class="form-row"><input class="fi" id="dlN" placeholder="وش صرفت على؟" type="text"><input class="fi" id="dlA" placeholder="المبلغ" type="number" min="0"><select class="fs" id="dlT"><option value="out">💸 صرفت</option><option value="in">💵 دخل</option></select><select class="fs" id="dlC"><option value="🛒">🛒 بقالة</option><option value="🍽️">🍽️ مطعم</option><option value="🚗">🚗 مواصلات</option><option value="💄">💄 عناية</option><option value="🎮">🎮 ترفيه</option><option value="🏥">🏥 صحة</option><option value="💡">💡 فواتير</option><option value="➕">➕ غير ذلك</option></select><button class="fb2" onclick="addDE()">سجّل</button></div></div></div>
+>
   
   <!-- CHARITY / ZAKAT -->
   <div class="charity-wrap" id="charitySection">
@@ -2684,6 +2969,16 @@ document.addEventListener('keydown',function(e){
 qaSetType('out');
 checkNotifOnLoad();
 initCharity();
+
+// ── Render today's date in header pill ──
+(function() {
+  var el = document.getElementById('todayDatePill');
+  if (!el) return;
+  var now = new Date();
+  var days = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  var months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  el.textContent = days[now.getDay()] + ' ' + now.getDate() + ' ' + months[now.getMonth()];
+})();
 </script>
 </body>
 </html>
