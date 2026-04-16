@@ -1418,23 +1418,96 @@ footer {
 }
 
 /* ── QUICK CAT BUTTONS ── */
-.qa-cat-btn {
-  background: var(--bg4);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 2px 8px;
-  font-size: 11px;
-  cursor: pointer;
-  color: var(--text3);
-  white-space: nowrap;
-  transition: all .15s;
-  font-family: var(--font-body);
-  flex-shrink: 0;
+/* qa-cat-btn: see main nav CSS */
+
+
+/* ══ WALLET / ACHIEVEMENT CARDS ══ */
+.wallet-cards-section{margin-top:14px;}
+.wallet-card{
+  border-radius:18px;padding:20px 18px;
+  position:relative;overflow:hidden;
+  margin-bottom:10px;
+  cursor:default;
+  transition:transform .25s;
 }
-.qa-cat-btn:hover { border-color: var(--gold); color: var(--gold2); }
-.qa-cat-btn.active { background: var(--gold-dim); border-color: var(--gold); color: var(--gold2); font-weight: 700; }
-#qaCatRow { scrollbar-width: none; }
-#qaCatRow::-webkit-scrollbar { display: none; }
+.wallet-card:hover{transform:translateY(-2px);}
+.wallet-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+}
+.wallet-card.bronze{
+  background:linear-gradient(145deg,#1a0e00,#0e0700);
+  border:1px solid rgba(205,127,50,.3);
+}
+.wallet-card.bronze::before{background:linear-gradient(90deg,transparent,#cd7f32,#e8a060,#cd7f32,transparent);}
+.wallet-card.gold-card{
+  background:linear-gradient(145deg,#1a1400,#0e0900);
+  border:1px solid rgba(201,168,76,.35);
+  box-shadow:0 0 28px rgba(201,168,76,.08);
+}
+.wallet-card.gold-card::before{background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);}
+.wallet-card.obsidian{
+  background:linear-gradient(145deg,#0a0a0e,#050508);
+  border:1px solid rgba(180,180,210,.2);
+  box-shadow:0 0 24px rgba(100,100,160,.06);
+}
+.wallet-card.obsidian::before{background:linear-gradient(90deg,transparent,#a0a0c0,#d0d0e8,#a0a0c0,transparent);}
+.wc-locked{
+  background:var(--bg3);border:1px dashed var(--border2);
+  border-radius:18px;padding:14px 18px;
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:10px;opacity:.65;
+}
+.wc-locked-icon{font-size:28px;flex-shrink:0;filter:grayscale(1);}
+.wc-locked-body{flex:1;}
+.wc-locked-name{font-size:13px;font-weight:700;color:var(--text3);}
+.wc-locked-days{font-size:11px;color:var(--text3);margin-top:2px;}
+.wc-locked-prog{background:var(--bg5);border-radius:4px;height:4px;margin-top:8px;overflow:hidden;}
+.wc-locked-fill{height:100%;border-radius:4px;transition:width .8s ease;}
+.wc-locked.bronze-l .wc-locked-fill{background:#cd7f32;}
+.wc-locked.gold-l .wc-locked-fill{background:var(--gold);}
+.wc-locked.obsidian-l .wc-locked-fill{background:#a0a0c0;}
+
+.wc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;}
+.wc-badge{font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
+.wallet-card.bronze .wc-badge{background:rgba(205,127,50,.15);color:#e8a060;border:1px solid rgba(205,127,50,.25);}
+.wallet-card.gold-card .wc-badge{background:rgba(201,168,76,.12);color:var(--gold2);border:1px solid rgba(201,168,76,.25);}
+.wallet-card.obsidian .wc-badge{background:rgba(160,160,200,.08);color:#c0c0d8;border:1px solid rgba(160,160,200,.18);}
+.wc-days-big{font-size:48px;font-weight:900;line-height:1;}
+.wallet-card.bronze .wc-days-big{color:#e8a060;}
+.wallet-card.gold-card .wc-days-big{color:var(--gold2);}
+.wallet-card.obsidian .wc-days-big{color:#c8c8e0;}
+.wc-days-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+.wallet-card.bronze .wc-days-lbl{color:rgba(232,160,96,.5);}
+.wallet-card.gold-card .wc-days-lbl{color:rgba(201,168,76,.5);}
+.wallet-card.obsidian .wc-days-lbl{color:rgba(192,192,216,.4);}
+.wc-body{display:flex;justify-content:space-between;align-items:flex-end;}
+.wc-left{}
+.wc-achieved-lbl{font-size:10px;font-weight:700;letter-spacing:.5px;margin-bottom:4px;}
+.wallet-card.bronze .wc-achieved-lbl{color:rgba(232,160,96,.6);}
+.wallet-card.gold-card .wc-achieved-lbl{color:rgba(201,168,76,.6);}
+.wallet-card.obsidian .wc-achieved-lbl{color:rgba(192,192,216,.5);}
+.wc-date{font-size:12px;color:rgba(255,255,255,.4);}
+.wc-right{text-align:left;}
+.wc-emoji{font-size:36px;line-height:1;}
+.wc-pts{font-size:11px;font-weight:700;margin-top:4px;}
+.wallet-card.bronze .wc-pts{color:rgba(232,160,96,.7);}
+.wallet-card.gold-card .wc-pts{color:rgba(201,168,76,.7);}
+.wallet-card.obsidian .wc-pts{color:rgba(192,192,216,.6);}
+.wc-divider{height:1px;margin:12px 0;opacity:.15;}
+.wallet-card.bronze .wc-divider{background:#cd7f32;}
+.wallet-card.gold-card .wc-divider{background:var(--gold);}
+.wallet-card.obsidian .wc-divider{background:#a0a0c0;}
+.wc-footer{font-size:11px;line-height:1.6;}
+.wallet-card.bronze .wc-footer{color:rgba(232,160,96,.5);}
+.wallet-card.gold-card .wc-footer{color:rgba(201,168,76,.5);}
+.wallet-card.obsidian .wc-footer{color:rgba(192,192,216,.4);}
+.wc-shine{
+  position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);
+  animation:walletShine 4s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes walletShine{0%,100%{left:-100%;}50%{left:120%;}}
 
 </style>
 </head>
@@ -2578,16 +2651,16 @@ body::before{
   position:sticky;top:0;z-index:200;
 }
 .header-band{
-  background:var(--gold-dim);
-  border-bottom:1px solid var(--gold-border);
-  padding:4px 16px;
-  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(90deg,rgba(201,168,76,.08),rgba(201,168,76,.04),rgba(201,168,76,.08));
+  border-bottom:1px solid rgba(201,168,76,.15);
+  padding:3px 16px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
 }
-.header-band-crown{font-size:13px;animation:crownFloat 3s ease-in-out infinite;}
+.header-band-crown{font-size:11px;animation:crownFloat 3s ease-in-out infinite;}
 @keyframes crownFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-2px);}}
-.header-band-chip{background:var(--gold);color:#0a0600;font-size:9px;font-weight:800;padding:2px 8px;border-radius:20px;letter-spacing:.5px;}
-.header-band-text{font-size:11px;font-weight:600;color:var(--gold2);letter-spacing:.3px;}
-.header-band-price{font-size:10px;color:var(--text2);margin-right:auto;}
+.header-band-chip{background:var(--gold);color:#0a0600;font-size:8px;font-weight:800;padding:1px 7px;border-radius:20px;letter-spacing:.5px;}
+.header-band-text{font-size:10px;font-weight:600;color:rgba(201,168,76,.7);letter-spacing:.3px;}
+.header-band-price{font-size:9px;color:var(--text3);margin-right:auto;}
 .header-inner{
   max-width:680px;margin:0 auto;
   display:flex;align-items:center;gap:10px;
@@ -2633,23 +2706,48 @@ body::before{
    MAIN NAV TABS
 ──────────────────────────── */
 .main-nav{
-  background:var(--bg2);border-bottom:1px solid var(--border);
+  background:var(--bg2);
+  border-bottom:1px solid var(--border);
   position:sticky;top:87px;z-index:199;
+  padding:0 8px;
 }
-.main-nav-inner{max-width:680px;margin:0 auto;display:flex;}
+.main-nav-inner{
+  max-width:680px;margin:0 auto;
+  display:flex;gap:4px;
+  padding:7px 0 0;
+}
 .main-nav-btn{
-  flex:1;padding:10px 2px 8px;
-  border:none;border-bottom:2px solid transparent;
+  flex:1;
+  padding:8px 4px 7px;
+  border:none;
+  border-bottom:2.5px solid transparent;
+  border-radius:10px 10px 0 0;
   background:none;cursor:pointer;
-  font-family:var(--font);font-size:11px;font-weight:700;
+  font-family:var(--font);font-size:10px;font-weight:700;
   color:var(--text3);
-  display:flex;flex-direction:column;align-items:center;gap:2px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
   transition:all .18s;
+  min-width:0;
+  position:relative;
 }
-.main-nav-btn:hover{color:var(--text2);background:var(--bg4);}
-.main-nav-btn.active{color:var(--gold2);border-bottom-color:var(--gold);}
-.nav-icon{font-size:16px;}
-.nav-label{font-size:9px;white-space:nowrap;}
+.main-nav-btn:hover{
+  color:var(--text2);
+  background:rgba(255,255,255,.04);
+}
+.main-nav-btn.active{
+  color:var(--gold2);
+  border-bottom-color:var(--gold);
+  background:rgba(201,168,76,.06);
+}
+.nav-icon{font-size:18px;line-height:1;}
+.nav-label{
+  font-size:9px;
+  white-space:nowrap;
+  letter-spacing:.2px;
+}
+.main-nav-btn.active .nav-label{color:var(--gold2);}
+.main-nav-btn.active .nav-icon{filter:drop-shadow(0 0 4px rgba(201,168,76,.5));}
+
 
 /* MONTH BAR */
 .month-bar{
@@ -3345,40 +3443,186 @@ body::before{
 /* ────────────────────────────
    QUICK ADD BAR
 ──────────────────────────── */
-.quick-bar{
-  z-index:300;
-  background:var(--bg2);border-top:1px solid var(--border);
-  padding:8px 12px 12px;display:flex;gap:7px;align-items:center;
+
+/* ════════════════════════════════════
+   FAB — Floating Action Button
+════════════════════════════════════ */
+.fab-btn{
+  position:fixed;
+  bottom:22px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:350;
+  width:58px;height:58px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(145deg,var(--gold),var(--gold2));
+  color:#0a0600;
+  font-size:26px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 6px 24px rgba(201,168,76,.45),0 2px 8px rgba(0,0,0,.4);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .18s cubic-bezier(.4,0,.2,1),box-shadow .18s,opacity .18s;
+  -webkit-tap-highlight-color:transparent;
 }
-.qa-types{display:flex;gap:4px;flex-shrink:0;}
-.qa-type-btn{
-  width:34px;height:34px;border-radius:8px;border:1.5px solid var(--border);
-  background:transparent;cursor:pointer;font-size:14px;display:flex;align-items:center;
-  justify-content:center;transition:all .18s;color:var(--text3);
+.fab-btn:hover{
+  transform:translateX(-50%) scale(1.06);
+  box-shadow:0 8px 32px rgba(201,168,76,.55),0 3px 12px rgba(0,0,0,.5);
 }
-.qa-type-btn.expense.active{background:rgba(239,68,68,.12);border-color:var(--danger);color:var(--danger);}
-.qa-type-btn.income.active{background:var(--green-dim);border-color:var(--green);color:var(--green2);}
-.qa-field{
-  flex:1;display:flex;gap:5px;align-items:center;
-  background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;
-  padding:7px 11px;transition:border-color .18s;
+.fab-btn:active{transform:translateX(-50%) scale(.94);}
+.fab-btn.open{
+  transform:translateX(-50%) rotate(45deg);
+  background:var(--bg4);
+  color:var(--text2);
+  box-shadow:0 4px 16px rgba(0,0,0,.5);
 }
-.qa-field:focus-within{border-color:var(--gold);}
-.qa-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:var(--font);font-size:13px;}
-.qa-input::placeholder{color:var(--text3);}
-.qa-sep{width:1px;height:16px;background:var(--border2);flex-shrink:0;}
-.qa-amount{width:65px;background:none;border:none;outline:none;color:var(--text);font-family:var(--font);font-size:13px;text-align:left;}
-.qa-submit{
-  width:38px;height:38px;border-radius:10px;border:none;
-  background:var(--gold);color:#0a0600;font-size:17px;cursor:pointer;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;transition:all .18s;
+
+/* ════════════════════════════════════
+   DRAWER OVERLAY + PANEL
+════════════════════════════════════ */
+.drawer-overlay{
+  position:fixed;inset:0;
+  z-index:340;
+  background:rgba(0,0,0,0);
+  pointer-events:none;
+  transition:background .25s;
 }
-.qa-submit:hover{opacity:.88;}
+.drawer-overlay.open{
+  background:rgba(0,0,0,.55);
+  pointer-events:all;
+}
+.drawer-panel{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  z-index:345;
+  background:var(--bg2);
+  border-radius:24px 24px 0 0;
+  border-top:1px solid var(--border);
+  border-left:1px solid var(--border);
+  border-right:1px solid var(--border);
+  padding:0 0 env(safe-area-inset-bottom,12px);
+  transform:translateY(110%);
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+  max-width:540px;
+  margin:0 auto;
+  box-shadow:0 -8px 40px rgba(0,0,0,.6);
+}
+.drawer-panel.open{transform:translateY(0);}
+
+.drawer-handle{
+  width:36px;height:4px;
+  background:var(--border2);border-radius:4px;
+  margin:10px auto 0;
+}
+.drawer-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px 10px;
+  border-bottom:1px solid var(--border);
+}
+.drawer-title{font-size:14px;font-weight:800;color:var(--text);}
+.drawer-type-row{display:flex;gap:6px;}
+.drawer-type-btn{
+  flex:1;padding:9px 8px;
+  border-radius:11px;border:1.5px solid var(--border);
+  background:var(--bg4);cursor:pointer;
+  font-family:var(--font);font-size:13px;font-weight:700;
+  color:var(--text3);
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:all .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.drawer-type-btn.exp.active{
+  background:rgba(239,68,68,.12);
+  border-color:var(--danger);color:var(--danger);
+}
+.drawer-type-btn.inc.active{
+  background:var(--green-dim);
+  border-color:var(--green);color:var(--green2);
+}
+.drawer-body{padding:14px 18px;}
+.drawer-inputs{
+  display:flex;gap:8px;margin-bottom:12px;
+}
+.drawer-input{
+  flex:1;
+  background:var(--bg4);
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  padding:13px 14px;
+  color:var(--text);
+  font-family:var(--font);font-size:15px;
+  outline:none;
+  transition:border-color .15s;
+  -webkit-appearance:none;
+}
+.drawer-input:focus{border-color:var(--gold);background:var(--bg3);}
+.drawer-input::placeholder{color:var(--text3);}
+.drawer-amount{
+  width:110px;flex-shrink:0;
+  text-align:right;
+  direction:ltr;
+  font-weight:700;
+}
+.drawer-cat-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:6px;
+  margin-bottom:14px;
+}
+.drawer-cat-btn{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:8px 4px;
+  border-radius:11px;
+  border:1.5px solid var(--border);
+  background:var(--bg4);
+  cursor:pointer;
+  transition:all .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.drawer-cat-btn:active{transform:scale(.93);}
+.drawer-cat-btn.active{
+  border-color:var(--gold);
+  background:var(--gold-dim);
+}
+.drawer-cat-btn .dc-emoji{font-size:20px;line-height:1;}
+.drawer-cat-btn .dc-lbl{font-size:9px;color:var(--text3);font-weight:600;font-family:var(--font);}
+.drawer-cat-btn.active .dc-lbl{color:var(--gold2);}
+.drawer-shortcuts{
+  display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap;
+}
+.drawer-shortcut{
+  background:var(--bg4);border:1px solid var(--border);
+  border-radius:8px;padding:5px 12px;
+  font-size:12px;font-weight:700;color:var(--text3);
+  cursor:pointer;transition:all .14s;font-family:var(--font);
+  -webkit-tap-highlight-color:transparent;
+}
+.drawer-shortcut:active{transform:scale(.93);}
+.drawer-shortcut:hover,.drawer-shortcut.exp-s:hover{border-color:var(--gold);color:var(--gold2);}
+.drawer-submit{
+  width:100%;padding:15px;
+  border-radius:14px;border:none;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#0a0600;
+  font-family:var(--font);font-size:16px;font-weight:800;
+  cursor:pointer;
+  transition:all .18s;
+  box-shadow:0 4px 16px rgba(201,168,76,.3);
+  -webkit-tap-highlight-color:transparent;
+  letter-spacing:.2px;
+}
+.drawer-submit:active{transform:scale(.97);opacity:.88;}
+.drawer-submit.inc-mode{
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  box-shadow:0 4px 16px rgba(16,185,129,.3);
+}
+
 
 /* ────────────────────────────
    SAVE + TOAST
 ──────────────────────────── */
-.save-wrap{position:fixed;bottom:64px;left:50%;transform:translateX(-50%);z-index:290;opacity:0;pointer-events:none;transition:opacity .3s;}
+.save-wrap{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:290;opacity:0;pointer-events:none;transition:opacity .3s;}
 .save-wrap.dirty{opacity:1;pointer-events:all;}
 .save-btn-main{
   background:var(--gold);color:#0a0600;border:none;border-radius:20px;
@@ -3603,6 +3847,9 @@ body::before{
       <div class="streak-stat"><div class="streak-stat-num" id="sTot">0</div><div class="streak-stat-lbl">إجمالي</div></div>
     </div>
   </div>
+
+  <!-- WALLET ACHIEVEMENT CARDS -->
+  <div id="walletCards" class="wallet-cards-section"></div>
 
   <div class="pro-feature-card">
     <div class="pro-feature-tag">✨ PRO — ذكاء اصطناعي</div>
@@ -4054,30 +4301,62 @@ body::before{
 
 
     </div>
-    <div class="quick-bar">
-  <div class="qa-types">
-    <button class="qa-type-btn expense active" id="qaBtnOut" onclick="qaSetType('out')">💸</button>
-    <button class="qa-type-btn income" id="qaBtnIn" onclick="qaSetType('in')">💵</button>
-  </div>
-  <div class="qa-field" style="flex-direction:column;align-items:stretch;gap:5px;padding:7px 11px;">
-    <div style="display:flex;gap:5px;align-items:center;">
-      <input class="qa-input" id="qaName" placeholder="وش صرفت على؟" onkeydown="if(event.key==='Enter')qaSubmit()" style="flex:1;min-width:0">
-      <div class="qa-sep"></div>
-      <input class="qa-amount" id="qaAmt" type="number" placeholder="ريال" onkeydown="if(event.key==='Enter')qaSubmit()">
-    </div>
-    <div id="qaCatRow" style="display:flex;gap:3px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:1px;">
-      <button class="qa-cat-btn active" data-cat="🛒" onclick="qaSetCatBtn(this)">🛒 بقالة</button>
-      <button class="qa-cat-btn" data-cat="🍽️" onclick="qaSetCatBtn(this)">🍽️ مطعم</button>
-      <button class="qa-cat-btn" data-cat="☕" onclick="qaSetCatBtn(this)">☕ قهوة</button>
-      <button class="qa-cat-btn" data-cat="⛽" onclick="qaSetCatBtn(this)">⛽ بنزين</button>
-      <button class="qa-cat-btn" data-cat="🎮" onclick="qaSetCatBtn(this)">🎮 ترفيه</button>
-      <button class="qa-cat-btn" data-cat="👗" onclick="qaSetCatBtn(this)">👗 ملابس</button>
-      <button class="qa-cat-btn" data-cat="🏥" onclick="qaSetCatBtn(this)">🏥 صحة</button>
-      <button class="qa-cat-btn" data-cat="➕" onclick="qaSetCatBtn(this)">➕ أخرى</button>
+    
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- SLIDE-UP DRAWER -->
+<div class="drawer-panel" id="drawerPanel">
+  <div class="drawer-handle"></div>
+  <div class="drawer-header">
+    <div class="drawer-type-row" style="flex:1">
+      <button class="drawer-type-btn exp active" id="dBtnOut" onclick="drawerSetType('out')">
+        💸 مصروف
+      </button>
+      <button class="drawer-type-btn inc" id="dBtnIn" onclick="drawerSetType('in')">
+        💵 دخل
+      </button>
     </div>
   </div>
-  <button class="qa-submit" onclick="qaSubmit()">✓</button>
+  <div class="drawer-body">
+    <!-- Category grid (expense only) -->
+    <div id="drawerCatGrid" class="drawer-cat-grid">
+      <button class="drawer-cat-btn active" data-cat="🛒" onclick="drawerSetCat(this)"><span class="dc-emoji">🛒</span><span class="dc-lbl">بقالة</span></button>
+      <button class="drawer-cat-btn" data-cat="🍽️" onclick="drawerSetCat(this)"><span class="dc-emoji">🍽️</span><span class="dc-lbl">مطعم</span></button>
+      <button class="drawer-cat-btn" data-cat="☕" onclick="drawerSetCat(this)"><span class="dc-emoji">☕</span><span class="dc-lbl">قهوة</span></button>
+      <button class="drawer-cat-btn" data-cat="⛽" onclick="drawerSetCat(this)"><span class="dc-emoji">⛽</span><span class="dc-lbl">بنزين</span></button>
+      <button class="drawer-cat-btn" data-cat="🎮" onclick="drawerSetCat(this)"><span class="dc-emoji">🎮</span><span class="dc-lbl">ترفيه</span></button>
+      <button class="drawer-cat-btn" data-cat="👗" onclick="drawerSetCat(this)"><span class="dc-emoji">👗</span><span class="dc-lbl">ملابس</span></button>
+      <button class="drawer-cat-btn" data-cat="🏥" onclick="drawerSetCat(this)"><span class="dc-emoji">🏥</span><span class="dc-lbl">صحة</span></button>
+      <button class="drawer-cat-btn" data-cat="✈️" onclick="drawerSetCat(this)"><span class="dc-emoji">✈️</span><span class="dc-lbl">سفر</span></button>
+      <button class="drawer-cat-btn" data-cat="💊" onclick="drawerSetCat(this)"><span class="dc-emoji">💊</span><span class="dc-lbl">دواء</span></button>
+      <button class="drawer-cat-btn" data-cat="➕" onclick="drawerSetCat(this)"><span class="dc-emoji">➕</span><span class="dc-lbl">أخرى</span></button>
+    </div>
+    <!-- Inputs -->
+    <div class="drawer-inputs">
+      <input class="drawer-input" id="drawerName" type="text" placeholder="الوصف..." autocomplete="off" onkeydown="if(event.key==='Enter')document.getElementById('drawerAmt').focus()">
+      <input class="drawer-input drawer-amount" id="drawerAmt" type="number" placeholder="0 ﷼" onkeydown="if(event.key==='Enter')drawerSubmit()">
+    </div>
+    <!-- Amount shortcuts -->
+    <div class="drawer-shortcuts" id="drawerShortcuts">
+      <span class="drawer-shortcut" onclick="drawerSetAmt(10)">١٠</span>
+      <span class="drawer-shortcut" onclick="drawerSetAmt(20)">٢٠</span>
+      <span class="drawer-shortcut" onclick="drawerSetAmt(50)">٥٠</span>
+      <span class="drawer-shortcut" onclick="drawerSetAmt(100)">١٠٠</span>
+      <span class="drawer-shortcut" onclick="drawerSetAmt(200)">٢٠٠</span>
+      <span class="drawer-shortcut" onclick="drawerSetAmt(500)">٥٠٠</span>
+      <span class="drawer-shortcut" onclick="drawerSetAmt(1000)">١٠٠٠</span>
+    </div>
+    <!-- Submit -->
+    <button class="drawer-submit" id="drawerSubmitBtn" onclick="drawerSubmit()">
+      سجّل المصروف ✓
+    </button>
+  </div>
 </div>
+
+<!-- FAB BUTTON -->
+<button class="fab-btn" id="fabBtn" onclick="toggleDrawer()" title="إضافة سريعة">＋</button>
+
   </div>
 </div>
 
@@ -4548,20 +4827,125 @@ function calcStreak(){
   s.current=cnt;s.max=Math.max(s.max||0,cnt);s.total=s.days.length;
 }
 function doCheckin(){
-  const today=getTodayStr();if(state.streak.days.includes(today)){toast('سجّلت حضورك اليوم بالفعل 🔥','warn');return;}
+  const today=getTodayStr();
+  if(state.streak.days.includes(today)){toast('سجّلت حضورك اليوم بالفعل 🔥','warn');return;}
   state.streak.days.push(today);calcStreak();S.save('streak',state.streak);addPts(20);
-  if(state.streak.current===7){addPts(50);toast('🏆 أسبوع كامل! +٥٠ نقطة','warn');}
-  if(state.streak.current===30){addPts(200);toast('🌟 شهر كامل! +٢٠٠ نقطة','warn');}
-  renderStreak();toast('تم تسجيل حضورك 🔥 +٢٠ نقطة','success');
+  const cur=state.streak.current;
+  if(cur===7){addPts(50);setTimeout(()=>toast('🏆 أسبوع كامل! +٥٠ نقطة','warn'),300);}
+  if(cur===30){addPts(200);setTimeout(()=>toast('🥉 مبروك! ٣٠ يوم — فتحت بطاقة البرونز! +٢٠٠ نقطة','warn'),300);}
+  if(cur===60){addPts(500);setTimeout(()=>toast('🥇 مبروك! ٦٠ يوم — فتحت بطاقة الذهب! +٥٠٠ نقطة','warn'),300);}
+  if(cur===90){addPts(1000);setTimeout(()=>toast('💎 أسطورة! ٩٠ يوم — فتحت بطاقة الأوبسيديان! +١٠٠٠ نقطة','warn'),300);}
+  renderStreak();
+  toast('تم تسجيل حضورك 🔥 +٢٠ نقطة','success');
 }
 function renderStreak(){
-  calcStreak();const s=state.streak,today=getTodayStr(),checked=s.days.includes(today),cur=s.current||0;
-  const numEl=document.getElementById('streakNum');if(numEl){numEl.textContent=cur;numEl.className='streak-num'+(cur>0?' active':'');}
+  calcStreak();
+  const s=state.streak,today=getTodayStr(),checked=s.days.includes(today),cur=s.current||0,tot=s.total||0;
+  const numEl=document.getElementById('streakNum');
+  if(numEl){numEl.textContent=cur;numEl.className='streak-num'+(cur>0?' active':'');}
   const dotsEl=document.getElementById('streakDots');
   if(dotsEl){let h='';for(let i=6;i>=0;i--){const dt=new Date();dt.setDate(dt.getDate()-i);const ds=`${dt.getFullYear()}-${dt.getMonth()+1}-${dt.getDate()}`,done=s.days.includes(ds),isToday=(i===0),name=DAY_NAMES[dt.getDay()];h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:3px"><div class="streak-dot${done?' done':''}${isToday&&!done?' today':''}">${done?'✓':name}</div><div style="font-size:8px;color:var(--text3)">${dt.getDate()}</div></div>`;}dotsEl.innerHTML=h;}
-  const btn=document.getElementById('streakBtn');if(btn){btn.textContent=checked?'✅ سجّلت حضورك اليوم':'🔥 سجّل حضورك اليوم';btn.className='streak-checkin'+(checked?' done':'');}
-  let msg='';if(!checked)msg='سجّل حضورك ⚡';else if(cur>=30)msg='🌟 شهر كامل!';else if(cur>=7)msg='🏆 أسبوع كامل!';else if(cur>=3)msg=`🔥 ${cur} أيام!`;else if(cur===1)msg='✅ بداية موفقة!';else msg='ابدأ سلسلتك 💪';
-  setText('streakMsg',msg);setText('sCur',s.current||0);setText('sMax',s.max||0);setText('sTot',s.total||0);
+  const btn=document.getElementById('streakBtn');
+  if(btn){btn.textContent=checked?'✅ سجّلت حضورك اليوم':'🔥 سجّل حضورك اليوم';btn.className='streak-checkin'+(checked?' done':'');}
+  let msg='';
+  if(!checked)msg='سجّل حضورك اليوم ⚡';
+  else if(cur>=90)msg='💎 أسطورة! ٩٠ يوم — بطاقة الأوبسيديان 🖤';
+  else if(cur>=60)msg='✨ ذهبي! ٦٠ يوم — بطاقة الذهب 🥇';
+  else if(cur>=30)msg='🥉 برونز! ٣٠ يوم — بطاقتك جاهزة!';
+  else if(cur>=7)msg='🏆 أسبوع كامل! استمر 💪';
+  else if(cur>=3)msg=`🔥 ${cur} أيام! قريب من الأسبوع`;
+  else if(cur===1)msg='✅ بداية موفقة! كمّل كل يوم';
+  else msg='ابدأ سلسلتك 💪';
+  setText('streakMsg',msg);setText('sCur',cur);setText('sMax',s.max||0);setText('sTot',tot);
+  renderWalletCards(cur,tot,s);
+}
+function renderWalletCards(cur,tot,s){
+  const el=document.getElementById('walletCards');if(!el)return;
+  // Use max of current streak or total days (some may have reset)
+  const best=Math.max(cur,s.max||0);
+  const totalDays=tot;
+
+  // Find milestone dates
+  function getMilestoneDate(target){
+    if(!s.days||!s.days.length)return null;
+    const sorted=[...s.days].sort();
+    if(sorted.length<target)return null;
+    // Find if there's a consecutive run of `target` days
+    // For simplicity: check if best streak >= target; use the date of the target-th day in longest run
+    if(best>=target){
+      const dateStr=sorted[Math.min(target-1,sorted.length-1)];
+      if(dateStr){
+        const [y,m,d]=dateStr.split('-').map(Number);
+        return `${d}/${m}/${y}`;
+      }
+    }
+    return null;
+  }
+
+  let html='';
+
+  // ── TIER CONFIG ──
+  const tiers=[
+    {days:30,name:'BRONZE',emoji:'🥉',cls:'bronze',pts:200,
+     desc:'أتممت ٣٠ يوماً من الانضباط المالي — المستوى البرونزي',
+     locked_cls:'bronze-l',fill_color:'#cd7f32'},
+    {days:60,name:'GOLD ✦',emoji:'🥇',cls:'gold-card',pts:500,
+     desc:'ستة عقود من المتابعة اليومية — مستوى الذهب',
+     locked_cls:'gold-l',fill_color:'var(--gold)'},
+    {days:90,name:'OBSIDIAN',emoji:'💎',cls:'obsidian',pts:1000,
+     desc:'٩٠ يوماً — أنت الآن مخطط مالي محترف حقيقي',
+     locked_cls:'obsidian-l',fill_color:'#a0a0c0'},
+  ];
+
+  tiers.forEach(tier=>{
+    const achieved=best>=tier.days;
+    const pct=Math.min(100,Math.round((best/tier.days)*100));
+    const milestoneDate=getMilestoneDate(tier.days);
+
+    if(achieved){
+      html+=`
+      <div class="wallet-card ${tier.cls}">
+        <div class="wc-shine"></div>
+        <div class="wc-header">
+          <div>
+            <div class="wc-badge">${tier.name}</div>
+          </div>
+          <div style="text-align:left">
+            <div class="wc-days-big">${tier.days}</div>
+            <div class="wc-days-lbl">يوم</div>
+          </div>
+        </div>
+        <div class="wc-divider"></div>
+        <div class="wc-body">
+          <div class="wc-left">
+            <div class="wc-achieved-lbl">✦ تم الإنجاز</div>
+            ${milestoneDate?`<div class="wc-date">${milestoneDate}</div>`:''}
+            <div class="wc-footer" style="margin-top:6px">${tier.desc}</div>
+          </div>
+          <div class="wc-right">
+            <div class="wc-emoji">${tier.emoji}</div>
+            <div class="wc-pts">+${tier.pts} ⭐</div>
+          </div>
+        </div>
+      </div>`;
+    } else {
+      const remaining=tier.days-best;
+      html+=`
+      <div class="wc-locked ${tier.locked_cls}">
+        <div class="wc-locked-icon">${tier.emoji}</div>
+        <div class="wc-locked-body">
+          <div class="wc-locked-name">${tier.name} — ${tier.days} يوم</div>
+          <div class="wc-locked-days">باقي ${remaining} يوم لفتح هذه البطاقة</div>
+          <div class="wc-locked-prog">
+            <div class="wc-locked-fill" style="width:${pct}%;background:${tier.fill_color}"></div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--text3);font-weight:700">${pct}٪</div>
+      </div>`;
+    }
+  });
+
+  el.innerHTML=html;
 }
 
 /* SALARY */
@@ -4604,7 +4988,16 @@ function renderNotifPanel(){
 }
 
 /* QUICK ADD */
-function qaSetType(t){state.qaType=t;document.getElementById('qaBtnOut').className='qa-type-btn expense'+(t==='out'?' active':'');document.getElementById('qaBtnIn').className='qa-type-btn income'+(t==='in'?' active':'');document.getElementById('qaName').placeholder=t==='out'?'وش صرفت على؟':'مصدر الدخل؟';const catRow=document.getElementById('qaCatRow');if(catRow)catRow.style.display=t==='out'?'flex':'none';}
+function qaSetType(t){
+  state.qaType=t;
+  document.getElementById('qaBtnOut').className='qa-type-btn expense'+(t==='out'?' active':'');
+  document.getElementById('qaBtnIn').className='qa-type-btn income'+(t==='in'?' active':'');
+  document.getElementById('qaName').placeholder=t==='out'?'وش صرفت على؟ 💸':'مصدر الدخل؟ 💵';
+  const catRow=document.getElementById('qaCatRow');
+  if(catRow)catRow.style.display=t==='out'?'flex':'none';
+  // focus name input
+  setTimeout(()=>document.getElementById('qaName')?.focus(),50);
+}
 function qaSubmit(){
   const name=(document.getElementById('qaName')?.value||'').trim(),amt=parseFloat(document.getElementById('qaAmt')?.value)||0;
   if(!name&&!amt){if(state.qaType==='out')toggleForm('formVar');else toggleForm('formIncome');return;}
@@ -4637,6 +5030,107 @@ function saveAll(){S.save('data',state.data);S.save('pts',state.pts);state.dirty
 function toast(msg,type='success'){const w=document.getElementById('toastWrap'),el=document.createElement('div');el.className='toast '+type;el.textContent=msg;w.appendChild(el);setTimeout(()=>{el.style.opacity='0';el.style.transition='.3s';setTimeout(()=>el.remove(),300);},3000);}
 
 // init() called by openApp() when modal opens
+
+
+/* ════ FAB + DRAWER ════ */
+let _drawerType='out';
+function toggleDrawer(){
+  const panel=document.getElementById('drawerPanel');
+  const overlay=document.getElementById('drawerOverlay');
+  const fab=document.getElementById('fabBtn');
+  const isOpen=panel.classList.contains('open');
+  if(isOpen){closeDrawer();}
+  else{
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    fab.classList.add('open');
+    fab.innerHTML='✕';
+    setTimeout(()=>{
+      const inp=document.getElementById('drawerName');
+      if(inp)inp.focus();
+    },320);
+  }
+}
+function closeDrawer(){
+  document.getElementById('drawerPanel')?.classList.remove('open');
+  document.getElementById('drawerOverlay')?.classList.remove('open');
+  const fab=document.getElementById('fabBtn');
+  if(fab){fab.classList.remove('open');fab.innerHTML='＋';}
+}
+function drawerSetType(t){
+  _drawerType=t;
+  document.getElementById('dBtnOut').className='drawer-type-btn exp'+(t==='out'?' active':'');
+  document.getElementById('dBtnIn').className='drawer-type-btn inc'+(t==='in'?' active':'');
+  const catGrid=document.getElementById('drawerCatGrid');
+  const shortcuts=document.getElementById('drawerShortcuts');
+  const submitBtn=document.getElementById('drawerSubmitBtn');
+  const nameInp=document.getElementById('drawerName');
+  if(t==='out'){
+    if(catGrid)catGrid.style.display='grid';
+    if(shortcuts)shortcuts.style.display='flex';
+    if(submitBtn){submitBtn.textContent='سجّل المصروف ✓';submitBtn.className='drawer-submit';}
+    if(nameInp)nameInp.placeholder='الوصف...';
+  } else {
+    if(catGrid)catGrid.style.display='none';
+    if(shortcuts)shortcuts.style.display='flex';
+    if(submitBtn){submitBtn.textContent='سجّل الدخل ✓';submitBtn.className='drawer-submit inc-mode';}
+    if(nameInp)nameInp.placeholder='مصدر الدخل...';
+  }
+  setTimeout(()=>document.getElementById('drawerName')?.focus(),50);
+}
+function drawerSetCat(btn){
+  document.querySelectorAll('.drawer-cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function drawerSetAmt(v){
+  const el=document.getElementById('drawerAmt');
+  if(el){el.value=v;el.focus();}
+}
+function drawerSubmit(){
+  const name=(document.getElementById('drawerName')?.value||'').trim();
+  const amt=parseFloat(document.getElementById('drawerAmt')?.value)||0;
+  if(!name){
+    const el=document.getElementById('drawerName');
+    if(el){el.focus();el.style.borderColor='var(--danger)';setTimeout(()=>el.style.borderColor='',1200);}
+    toast('اكتب الوصف أولاً ⚠️','warn');return;
+  }
+  if(!amt){
+    const el=document.getElementById('drawerAmt');
+    if(el){el.focus();el.style.borderColor='var(--danger)';setTimeout(()=>el.style.borderColor='',1200);}
+    toast('اكتب المبلغ ⚠️','warn');return;
+  }
+  const m=getMonthData(state.year,state.month);
+  if(_drawerType==='out'){
+    const selCat=document.querySelector('.drawer-cat-btn.active');
+    const cat=selCat?selCat.dataset.cat:'➕';
+    const td=new Date().getDate();
+    if(!m.daily[td])m.daily[td]=[];
+    m.daily[td].push({id:Date.now(),name,amt,type:'out',cat});
+    addPts(10);
+    toast(cat+' '+name+' — '+fmt(amt)+' ﷼','success');
+  } else {
+    m.income.push({id:Date.now(),name,amt,cat:'💵',paid:false,recurring:false});
+    addPts(10);
+    toast('💵 '+name+' — '+fmt(amt)+' ﷼','success');
+  }
+  // Reset form
+  document.getElementById('drawerName').value='';
+  document.getElementById('drawerAmt').value='';
+  document.querySelectorAll('.drawer-cat-btn').forEach((b,i)=>{b.classList.toggle('active',i===0);});
+  markDirty();renderAll();
+  // Close after short delay so user sees toast
+  setTimeout(closeDrawer,600);
+}
+// Swipe down to close drawer
+(function(){
+  let startY=0;
+  document.addEventListener('touchstart',e=>{startY=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',e=>{
+    const dy=e.changedTouches[0].clientY-startY;
+    const panel=document.getElementById('drawerPanel');
+    if(dy>70&&panel?.classList.contains('open'))closeDrawer();
+  },{passive:true});
+})();
 
 </script>
 
